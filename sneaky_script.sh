@@ -12,18 +12,19 @@ fi
 # Change permissions of the script file
 chmod +x sneaky_script.sh
 
-# Define the script_kid function
+# Define the script function
 script_kid() {
   # Change permissions of the service startup script
   chmod +x "$FILE"
 
   # Enable and start the service
-  systemctl enable "$FILE"
-  systemctl start "$FILE"
 
   # Check if the service file exists
   if [ -f "$FILE" ]; then
     echo "Service file exists"
+      systemctl enable $FILE
+  systemctl start $FILE
+
   else
     echo "Service file does not exist"
   fi
